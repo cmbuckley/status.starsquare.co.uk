@@ -130,43 +130,43 @@ export async function notifyDiscord(monitor: Monitor, options: INotifyDiscordOpt
   })
 }
 
-export function getNotificationCount() {
+export function getNotificationCount(env: Env) {
   return [
-    SECRET_SLACK_WEBHOOK_URL === 'default',
-    typeof SECRET_TELEGRAM_CHAT_ID === 'undefined' || typeof SECRET_TELEGRAM_API_TOKEN === 'undefined',
-    SECRET_DISCORD_WEBHOOK_URL === 'default',
+    env.SECRET_SLACK_WEBHOOK_URL === 'default',
+    typeof env.SECRET_TELEGRAM_CHAT_ID === 'undefined' || typeof env.SECRET_TELEGRAM_API_TOKEN === 'undefined',
+    env.SECRET_DISCORD_WEBHOOK_URL === 'default',
   ].filter((item) => !item).length
 }
 
-export function getNotifications(monitor: Monitor, data: NotifyCoreData, afterFetch?: () => void) {
+export function getNotifications(env: Env, monitor: Monitor, data: NotifyCoreData, afterFetch?: () => void) {
   return [
     async () => {
-      if (SECRET_SLACK_WEBHOOK_URL === 'default') {
+      if (env.SECRET_SLACK_WEBHOOK_URL === 'default') {
         return
       }
       await notifySlack(monitor, {
-        webhook: SECRET_SLACK_WEBHOOK_URL,
+        webhook: env.SECRET_SLACK_WEBHOOK_URL,
         data,
       })
       afterFetch?.()
     },
     async () => {
-      if (typeof SECRET_TELEGRAM_CHAT_ID === 'undefined' || typeof SECRET_TELEGRAM_API_TOKEN === 'undefined') {
+      if (typeof env.SECRET_TELEGRAM_CHAT_ID === 'undefined' || typeof env.SECRET_TELEGRAM_API_TOKEN === 'undefined') {
         return
       }
       await notifyTelegram(monitor, {
-        chatId: SECRET_TELEGRAM_CHAT_ID,
-        apiToken: SECRET_TELEGRAM_API_TOKEN,
+        chatId: env.SECRET_TELEGRAM_CHAT_ID,
+        apiToken: env.SECRET_TELEGRAM_API_TOKEN,
         data,
       })
       afterFetch?.()
     },
     async () => {
-      if (SECRET_DISCORD_WEBHOOK_URL === 'default') {
+      if (env.SECRET_DISCORD_WEBHOOK_URL === 'default') {
         return
       }
       await notifyDiscord(monitor, {
-        webhook: SECRET_DISCORD_WEBHOOK_URL,
+        webhook: env.SECRET_DISCORD_WEBHOOK_URL,
         data,
       })
       afterFetch?.()

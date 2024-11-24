@@ -132,16 +132,16 @@ export async function notifyDiscord(monitor: Monitor, options: INotifyDiscordOpt
 
 export function getNotificationCount() {
   return [
-    typeof SECRET_SLACK_WEBHOOK_URL === 'undefined',
+    SECRET_SLACK_WEBHOOK_URL === 'default',
     typeof SECRET_TELEGRAM_CHAT_ID === 'undefined' || typeof SECRET_TELEGRAM_API_TOKEN === 'undefined',
-    typeof SECRET_DISCORD_WEBHOOK_URL === 'undefined',
+    SECRET_DISCORD_WEBHOOK_URL === 'default',
   ].filter((item) => !item).length
 }
 
 export function getNotifications(monitor: Monitor, data: NotifyCoreData, afterFetch?: () => void) {
   return [
     async () => {
-      if (typeof SECRET_SLACK_WEBHOOK_URL === 'undefined') {
+      if (SECRET_SLACK_WEBHOOK_URL === 'default') {
         return
       }
       await notifySlack(monitor, {
@@ -162,7 +162,7 @@ export function getNotifications(monitor: Monitor, data: NotifyCoreData, afterFe
       afterFetch?.()
     },
     async () => {
-      if (typeof SECRET_DISCORD_WEBHOOK_URL === 'undefined') {
+      if (SECRET_DISCORD_WEBHOOK_URL === 'default') {
         return
       }
       await notifyDiscord(monitor, {

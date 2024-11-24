@@ -2,6 +2,7 @@ name = "status-page"
 main = "./src/worker/index.ts"
 compatibility_date = "2024-11-24"
 workers_dev = true
+route = "status.starsquare.co.uk/*"
 kv_namespaces = [ { binding = "KV_STORE", id = "..." } ]
 
 [site]

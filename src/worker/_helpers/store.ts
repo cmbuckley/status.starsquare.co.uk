@@ -4,7 +4,6 @@ import type { Monitor } from '#src/types'
 
 import { config } from '#src/config'
 import { aMiB, memorySizeOf } from '#src/helpers/memory'
-import { ensureWorkerEnv } from '#src/worker/_helpers'
 
 export const DATA_KEY = 'data-v1'
 export const REMOTE_MONITORS_KEY = 'remote-monitors-v1'
@@ -65,7 +64,6 @@ export interface DataV1 {
 }
 
 export async function upsertRemoteMonitors(env: Env, value: Monitor[] | null) {
-  ensureWorkerEnv()
   if (value === null) {
     await env.KV_STORE.delete(REMOTE_MONITORS_KEY)
     return
@@ -74,7 +72,6 @@ export async function upsertRemoteMonitors(env: Env, value: Monitor[] | null) {
 }
 
 export async function upsertData(env: Env, value: DataV1 | null, allMonitors: Monitor[]) {
-  ensureWorkerEnv()
   if (value === null) {
     await env.KV_STORE.delete(DATA_KEY)
     return
@@ -122,7 +119,6 @@ export async function cleanDataV1(value: DataV1, allMonitors: Monitor[]) {
 }
 
 async function getStore(env: Env) {
-  ensureWorkerEnv()
   // https://developers.cloudflare.com/kv/api/read-key-value-pairs/
   let kvData = await env.KV_STORE.get<DataV1>(DATA_KEY, 'json')
   if (!kvData) {

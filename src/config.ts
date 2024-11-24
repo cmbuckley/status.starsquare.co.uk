@@ -57,5 +57,4 @@ export const config: Config = {
     name: 'yorkstudenthomes.com',
     url: 'https://yorkstudenthomes.com',
   }],
-  monitorsCsvUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSnewwW9OuXgtuutyYSfFJ_AZdI-UpkUjP2wWi-zZWM3MKa8IzBceWCe9qB_-Lmk-S7mSFgqKVnokam/pub?gid=0&single=true&output=csv',
 }

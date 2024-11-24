@@ -40,7 +40,12 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: npm run build
+        run: |
+          echo 'SECRET_SLACK_WEBHOOK_URL = ""'    > .dev.vars
+          echo 'SECRET_DISCORD_WEBHOOK_URL = ""' >> .dev.vars
+          echo 'SECRET_TELEGRAM_CHAT_ID = ""'    >> .dev.vars
+          echo 'SECRET_TELEGRAM_API_TOKEN = ""'  >> .dev.vars
+          npm run build
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3

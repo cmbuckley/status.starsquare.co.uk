@@ -91,7 +91,7 @@ export default function Page() {
           search={deferredSearch}
         />
       </main>
-      <footer className='my-4 flex justify-between'>
+      <footer className='text-xs my-4 flex justify-between'>
         <span>
           Powered by
           {' '}

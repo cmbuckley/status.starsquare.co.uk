@@ -2,7 +2,7 @@ import type { Config } from './types'
 
 export const config: Config = {
   settings: {
-    title: 'Status Page',
+    title: 'StarSquare Status',
     url: 'https://status.starsquare.co.uk',
     displayDays: 90,
     collectResponseTimes: true,
@@ -11,7 +11,7 @@ export const config: Config = {
     id: 'bux-re',
     name: 'Bux Short URL',
     url: 'https://bux.re',
-	expectStatus: 302,
+    expectStatus: 302,
   }, {
     id: 'cmbuckley-co-uk',
     name: 'Chris Personal Site',
@@ -20,7 +20,7 @@ export const config: Config = {
     id: 'cmbuckley-me',
     name: 'Bluesky',
     url: 'https://cmbuckley.me/',
-	expectStatus: 302,
+    expectStatus: 302,
   }, {
     id: 'emilia-buckley-name',
     name: 'Emilia Buckley',

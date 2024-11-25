@@ -111,3 +111,4 @@ You can use remote CSV monitors like [this template](https://docs.google.com/spr
 
 - [eidam/cf-workers-status-page](https://github.com/eidam/cf-workers-status-page)
 - [Vike](https://vike.dev/)
+- [Heart pulse icon](https://thenounproject.com/icon/heart-pulse-3568571/) by yudi susanto from [Noun Project](https://thenounproject.com/) (CC BY 3.0)

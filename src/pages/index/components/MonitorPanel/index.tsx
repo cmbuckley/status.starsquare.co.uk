@@ -193,9 +193,10 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                 )}
               </div>
               <ul className='flex gap-1'>
-                {getHistoryDates().map((dateItem) => {
+                {getHistoryDates().map((dateItem, index) => {
                   const targetDateChecksItem = monitorData ? getTargetDateChecksItem(monitorData, dateItem) : undefined
                   const renderStatus = monitorData ? getChecksItemRenderStatus(monitorData, dateItem) : undefined
+                  const displayDays = getDisplayDays()
 
                   let color = cls`bg-gray-300`
                   let textColor = cls`text-gray-300`
@@ -226,13 +227,17 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                       break
                   }
 
-                  const itemWidth = `calc(100% / ${getDisplayDays()})`
+                  const itemWidth = `calc(100% / ${displayDays})`
+                  const hideOlder = displayDays <= 60 || index < (displayDays / 2)
 
                   return (
                     <Tooltip key={dateItem}>
                       <TooltipTrigger
                         as='li'
-                        className='h-full'
+                        className={cls`
+                          h-full
+                          ${hideOlder && 'max-sm:hidden'}
+                        `}
                         style={{
                           width: itemWidth,
                         }}

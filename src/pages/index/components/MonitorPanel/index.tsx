@@ -48,7 +48,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
     <div {...restDivProps}>
       <div
         className={cls`
-          flex items-center justify-between rounded border px-4 py-2 text-lg font-bold shadow-md
+          items-center justify-between rounded border px-4 py-2 text-lg font-bold shadow-md md:flex
           ${titleCls}
         `}
         onDoubleClick={() => {

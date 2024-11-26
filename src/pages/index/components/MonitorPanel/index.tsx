@@ -206,22 +206,22 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                     case 'all-good':
                       color = cls`bg-green-500`
                       textColor = cls`text-green-500`
-                      statusStr = 'All good'
+                      statusStr = 'No incidents'
                       break
                     case 'all-incidents':
                       color = cls`bg-red-700`
                       textColor = cls`text-red-700`
-                      statusStr = `${targetDateChecksItem!.fails} incident(s)`
+                      statusStr = `${targetDateChecksItem!.fails} incident${targetDateChecksItem!.fails > 1 ? 's' : ''}`
                       break
                     case 'latest-incident':
                       color = cls`bg-red-500`
                       textColor = cls`text-red-500`
-                      statusStr = `${targetDateChecksItem!.fails} incident(s)`
+                      statusStr = `${targetDateChecksItem!.fails} incident${targetDateChecksItem!.fails > 1 ? 's' : ''}`
                       break
                     case 'has-incident':
                       color = cls`bg-yellow-500`
                       textColor = cls`text-yellow-500`
-                      statusStr = `${targetDateChecksItem!.fails} incident(s)`
+                      statusStr = `${targetDateChecksItem!.fails} incident${targetDateChecksItem!.fails > 1 ? 's' : ''}`
                       break
                     default:
                       break

@@ -24,3 +24,6 @@ crons = [
 [[env.production.kv_namespaces]]
 binding = "KV_STORE"
 # id = ""
+
+[env.test]
+route = "test.status.starsquare.co.uk/"

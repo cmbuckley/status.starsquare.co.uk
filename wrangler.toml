@@ -23,9 +23,3 @@ crons = [
   # Update remote csv monitors
   "*/10 * * * *",
 ]
-
-[[env.production.kv_namespaces]]
-binding = "KV_STORE"
-# id = ""
-# don't add anything below this line,
-# otherwise the id won't be properly appended by the workflow

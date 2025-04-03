@@ -52,13 +52,14 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           environment: ${{ github.ref_name == 'main' && 'production' || 'test' }}
           preCommands: |
-            wrangler kv namespace create KV_STORE || true
+            wrangler kv namespace create $KV_NAMESPACE || true
             echo "[[env.${{ github.ref_name == 'main' && 'production' || 'test' }}.kv_namespaces]]" >> wrangler.toml
             echo "  binding = \"KV_STORE\"" >> wrangler.toml
-            echo "  id = \"$(pnpm wrangler kv namespace list | node -pe "JSON.parse(fs.readFileSync('/dev/stdin').toString()).find(kv => kv.title.includes('KV_STORE')).id")\"" >> wrangler.toml
+            echo "  id = $(pnpm wrangler kv namespace list | jq --arg ns $KV_NAMESPACE 'map(select(.title == $ns))[].id')" >> wrangler.toml
           secrets: |
             SECRET_SLACK_WEBHOOK_URL
             SECRET_DISCORD_WEBHOOK_URL
         env:
+          KV_NAMESPACE: status-page-KV_STORE
           SECRET_SLACK_WEBHOOK_URL: ${{ secrets.SECRET_SLACK_WEBHOOK_URL || 'default' }}
           SECRET_DISCORD_WEBHOOK_URL: ${{ secrets.SECRET_DISCORD_WEBHOOK_URL || 'default' }}

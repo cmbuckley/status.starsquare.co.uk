@@ -60,7 +60,7 @@ export const config: Config = {
   }, {
     id: 'vistaverde-network-home-assistant',
     name: 'Home Assistant',
-    url: 'https://pi.vistaverde.network',
+    url: 'https://ha.vistaverde.network',
   }, {
     id: 'yorkstudenthomes-com',
     name: 'York Student Homes',

@@ -13,7 +13,7 @@ export function getChecksItemStatus(checksItem?: MonitorDailyChecksItem) {
       const checksTotalCount = Object.values(checksItem.stats).reduce((previous, current) => {
         return previous + current.count
       }, 0)
-      if (checksItem.fails === checksTotalCount) {
+      if (!Object.values(checksItem.stats).length || checksItem.fails === checksTotalCount) {
         status = 'all-incidents'
       } else {
         status = 'has-incident'

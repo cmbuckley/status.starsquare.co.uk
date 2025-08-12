@@ -6,6 +6,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
+    env:
+      ENV_NAME: ${{ github.ref_name == 'main' && 'production' || 'test' }}
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'test' }}
+      url: ${{ steps.deploy.outputs.deployment-url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -45,15 +50,16 @@ jobs:
           npm run build
 
       - name: Deploy
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           packageManager: pnpm
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          environment: ${{ github.ref_name == 'main' && 'production' || 'test' }}
+          environment: ${{ env.ENV_NAME }}
           preCommands: |
             wrangler kv namespace create $KV_NAMESPACE || true
-            echo "[[env.${{ github.ref_name == 'main' && 'production' || 'test' }}.kv_namespaces]]" >> wrangler.toml
+            echo "[[env.${{ env.ENV_NAME }}.kv_namespaces]]" >> wrangler.toml
             echo "  binding = \"KV_STORE\"" >> wrangler.toml
             echo "  id = $(pnpm wrangler kv namespace list | jq --arg ns $KV_NAMESPACE 'map(select(.title == $ns))[].id')" >> wrangler.toml
           secrets: |

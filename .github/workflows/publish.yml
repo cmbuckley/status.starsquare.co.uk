@@ -10,7 +10,7 @@ jobs:
       ENV_NAME: ${{ github.ref_name == 'main' && 'production' || 'test' }}
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'test' }}
-      url: ${{ steps.deploy.outputs.deployment-url }}
+      url: ${{ github.ref_name == 'main' && github.event.repository.homepage || steps.deploy.outputs.deployment-url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5

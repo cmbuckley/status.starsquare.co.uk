@@ -24,7 +24,7 @@ async function startServer() {
   ).middlewares
   app.use(viteDevMiddleware)
 
-  app.get('*', async (req, res, next) => {
+  app.get('*path', async (req, res, next) => {
     const userAgent = req.headers['user-agent'] || null
 
     const pageContextInit: CustomPageContext = {

@@ -12,7 +12,7 @@ bucket = "./dist/client"
 port = 3000
 
 [env.test]
-route = "test.status.starsquare.co.uk/"
+route = "test.status.starsquare.co.uk/*"
 
 [env.production]
 

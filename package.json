@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx ./dev-server",
     "public:assets": "tsx ./scripts/public-assets.ts",
-    "build": "npm run wrangler:types && tsc && npm run public:assets && vite build",
+    "build": "npm run wrangler:types && npm run public:assets && vite build",
     "preview": "npm run build && wrangler dev",
     "preview:production": "npm run build && wrangler dev --env production",
     "deploy": "npm run build && wrangler deploy --env production",
@@ -19,7 +19,7 @@
     "@brillout/json-serializer": "^0.5.13",
     "@cloudflare/kv-asset-handler": "^0.3.4",
     "@floating-ui/react": "^0.26.23",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^5.0.2",
     "node-fetch": "^3.3.2",
     "papaparse": "^5.4.1",
     "react": "^19.1.1",

@@ -29,16 +29,17 @@ export async function notifySlack(monitor: Monitor, options: NotifySlackOptions)
   const payload = {
     attachments: [
       {
-        fallback: `Monitor ${monitorName} changed status to ${getOperationalLabel(data.operational)} [${data.status}|${data.statusText}]`,
+        fallback: `Monitor ${monitorName} changed status to ${getOperationalLabel(data.operational)} (${data.status} ${data.statusText})`,
         color: data.operational ? '#36a64f' : '#f2c744',
         blocks: [
           {
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: `Monitor *${
-                monitorName
-              }* changed status to *${getOperationalLabel(data.operational)}*`,
+              text: `${
+                data.operational ? ':white_check_mark:' : ':x:'} Monitor *${
+                monitorName}* changed status to *${
+                getOperationalLabel(data.operational)}*`,
             },
           },
           {
@@ -46,11 +47,23 @@ export async function notifySlack(monitor: Monitor, options: NotifySlackOptions)
             elements: [
               {
                 type: 'mrkdwn',
-                text: `${data.operational ? ':white_check_mark:' : ':x:'} \`${
-                  monitor.method ? monitor.method : 'GET'
-                } ${monitor.url}\` - :eyes: <${
-                  config.settings.url
-                }|Status Page>`,
+                text: `*URL:*  ${monitor.url}\n*Method:* ${
+                  monitor.method || 'GET'}\n*Status:* \`${
+                  data.status}${data.statusText ? ` ${data.statusText}` : ''}\``,
+              },
+            ],
+          },
+          {
+            type: 'actions',
+            elements: [
+              {
+                type: 'button',
+                url: config.settings.url,
+                text: {
+                  type: 'plain_text',
+                  text: ':eyes: Status Page',
+                  emoji: true,
+                },
               },
             ],
           },

@@ -54,16 +54,11 @@ export async function notifySlack(monitor: Monitor, options: NotifySlackOptions)
             ],
           },
           {
-            type: 'actions',
+            type: 'context',
             elements: [
               {
-                type: 'button',
-                url: config.settings.url,
-                text: {
-                  type: 'plain_text',
-                  text: ':eyes: Status Page',
-                  emoji: true,
-                },
+                type: 'mrkdwn',
+                text: `:eyes: <${config.settings.url}|Status Page>`,
               },
             ],
           },

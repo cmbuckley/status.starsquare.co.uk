@@ -26,10 +26,11 @@ export async function notifySlack(monitor: Monitor, options: NotifySlackOptions)
   const { webhook, data } = options
 
   const monitorName = monitor.name || monitor.id
+  const statusLine = [data.status, data.statusText].filter(Boolean).join(' ')
   const payload = {
     attachments: [
       {
-        fallback: `Monitor ${monitorName} changed status to ${getOperationalLabel(data.operational)} (${data.status} ${data.statusText})`,
+        fallback: `Monitor ${monitorName} changed status to ${getOperationalLabel(data.operational)} (${statusLine})`,
         color: data.operational ? '#36a64f' : '#f2c744',
         blocks: [
           {
@@ -48,8 +49,7 @@ export async function notifySlack(monitor: Monitor, options: NotifySlackOptions)
               {
                 type: 'mrkdwn',
                 text: `*URL:*  ${monitor.url}\n*Method:* ${
-                  monitor.method || 'GET'}\n*Status:* \`${
-                  data.status}${data.statusText ? ` ${data.statusText}` : ''}\``,
+                  monitor.method || 'GET'}\n*Status:* \`${statusLine}\``,
               },
             ],
           },

@@ -61,6 +61,7 @@ export async function handleCronTrigger(env: Env, ctx: ExecutionContext) {
         status: checkResponse.status,
         statusText: checkResponse.statusText,
         operational: monitorOperational,
+        location: checkLocation,
       }, () => {
         subrequests.notified()
       })

@@ -1,6 +1,7 @@
 import type { Monitor } from '#src/types'
 
 import { config } from '#src/config'
+import { parseLocation } from '#src/helpers/locations'
 
 const operationalLabel = 'Active'
 const notOperationalLabel = 'Inactive'
@@ -15,6 +16,7 @@ export interface NotifyCoreData {
   operational: boolean
   status: number
   statusText: string
+  location: string
 }
 
 export interface NotifySlackOptions {
@@ -49,7 +51,8 @@ export async function notifySlack(monitor: Monitor, options: NotifySlackOptions)
               {
                 type: 'mrkdwn',
                 text: `*URL:*  ${monitor.url}\n*Method:* ${
-                  monitor.method || 'GET'}\n*Status:* \`${statusLine}\``,
+                  monitor.method || 'GET'}\n*Status:* \`${
+                  statusLine}\`\n*Location:* ${parseLocation(data.location)}`,
               },
             ],
           },

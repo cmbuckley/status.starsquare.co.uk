@@ -3,7 +3,7 @@ main = "./src/worker/index.ts"
 compatibility_date = "2025-08-15"
 workers_dev = true
 route = "status.starsquare.co.uk/*"
-kv_namespaces = [ { binding = "KV_STORE", id = "..." } ]
+kv_namespaces = [ { binding = "KV_STORE", id = "override_me" } ]
 
 [site]
 bucket = "./dist/client"
@@ -12,7 +12,7 @@ bucket = "./dist/client"
 port = 3000
 
 [env.test]
-route = "test.status.starsquare.co.uk/*"
+route = "status-test.starsquare.co.uk/*"
 
 [env.production]
 

@@ -17,11 +17,6 @@ export const config: Config = {
     name: 'Chris Personal Site',
     url: 'https://cmbuckley.co.uk/',
   }, {
-    id: 'cmbuckley-me',
-    name: 'Bluesky',
-    url: 'https://cmbuckley.me/',
-    expectStatus: 302,
-  }, {
     id: 'emilia-buckley-name',
     name: 'Emilia Buckley',
     url: 'https://emilia.buckley.name',

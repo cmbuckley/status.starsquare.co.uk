@@ -10,10 +10,23 @@ jobs:
       ENV_NAME: ${{ github.ref_name == 'main' && 'production' || 'test' }}
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'test' }}
-      url: ${{ github.ref_name == 'main' && github.event.repository.homepage || steps.deploy.outputs.deployment-url }}
+      url: ${{ steps.deployment-url.outputs.url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Get route from wrangler
+        uses: sebrollen/toml-action@v1.2.0
+        id: route
+        with:
+          file: wrangler.toml
+          field: ${{ github.ref_name == 'main' && 'route' || 'env.test.route' }}
+
+      - name: Get deployment URL
+        id: deployment-url
+        run: |
+          # route is in the format: hostname.example.com/*
+          echo "url=https://$(cut -f1 -d/ <<< "${{ steps.route.outputs.value }}")" >> $GITHUB_OUTPUT
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm

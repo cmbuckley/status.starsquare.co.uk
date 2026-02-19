@@ -1,15 +1,19 @@
 name: Deploy
 
-on: push
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
     env:
-      ENV_NAME: ${{ github.ref_name == 'main' && 'production' || 'test' }}
+      ENV_NAME: ${{ github.event_name == 'push' && 'production' || 'test' }}
     environment:
-      name: ${{ github.ref_name == 'main' && 'production' || 'test' }}
+      name: ${{ github.event_name == 'push' && 'production' || 'test' }}
       url: ${{ steps.deployment-url.outputs.url }}
     steps:
       - name: Checkout
@@ -20,7 +24,7 @@ jobs:
         id: route
         with:
           file: wrangler.toml
-          field: ${{ github.ref_name == 'main' && 'route' || 'env.test.route' }}
+          field: ${{ github.event_name == 'push' && 'route' || 'env.test.route' }}
 
       - name: Get deployment URL
         id: deployment-url

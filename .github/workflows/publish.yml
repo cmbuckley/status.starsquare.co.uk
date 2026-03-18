@@ -32,7 +32,7 @@ jobs:
           # route is in the format: hostname.example.com/*
           echo "url=https://$(cut -f1 -d/ <<< "${{ steps.route.outputs.value }}")" >> $GITHUB_OUTPUT
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         name: Install pnpm
         with:
           run_install: false

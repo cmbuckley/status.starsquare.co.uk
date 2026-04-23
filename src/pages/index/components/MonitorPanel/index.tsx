@@ -182,7 +182,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                 && (!monitorConfig.method || monitorConfig.method.toUpperCase() === 'GET')
                 && (
                   <a
-                    className='i-[ic--outline-open-in-new] size-5 text-slate-500 hover:text-slate-400'
+                    className='i-[ic--outline-open-in-new] size-5 !text-slate-500 hover:!text-slate-400'
                     href={monitorConfig.url}
                     target='_blank'
                     rel='noreferrer'

@@ -4,11 +4,13 @@ import react from '@vitejs/plugin-react'
 import vike from 'vike/plugin'
 import polishTaggedTemplates from 'unplugin-polish-tagged-templates/vite'
 import autoImport from 'unplugin-auto-import/vite'
+import tailwindcss from '@tailwindcss/vite'
 
 import type { UserConfig } from 'vite'
 
 export default {
   plugins: [
+    tailwindcss(),
     react(),
     vike(),
     polishTaggedTemplates({

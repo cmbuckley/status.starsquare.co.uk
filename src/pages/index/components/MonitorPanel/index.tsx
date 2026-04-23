@@ -31,7 +31,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
   if (!data || !data.monitorHistoryData || Object.keys(data).length === 0) {
     return (
       <Empty>
-        <span className='i-svg-spinners--ring-resize mr-1 size-5' />
+        <span className='i-[svg-spinners--ring-resize] mr-1 size-5' />
         No Data (
         {allMonitors.length}
         {' '}
@@ -154,7 +154,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                 {!!info.length && (
                   <Tooltip>
                     <TooltipTrigger className={cls` size-5 text-slate-500`}>
-                      <span className={cls`i-ic--outline-info size-full`} />
+                      <span className={cls`i-[ic--outline-info] size-full`} />
                     </TooltipTrigger>
                     <TooltipContent
                       as='ul'
@@ -182,7 +182,7 @@ const MonitorPanel: React.FC<IMonitorPanelProps> = (props) => {
                 && (!monitorConfig.method || monitorConfig.method.toUpperCase() === 'GET')
                 && (
                   <a
-                    className='i-ic--outline-open-in-new size-5 text-slate-500 hover:text-slate-400'
+                    className='i-[ic--outline-open-in-new] size-5 text-slate-500 hover:text-slate-400'
                     href={monitorConfig.url}
                     target='_blank'
                     rel='noreferrer'

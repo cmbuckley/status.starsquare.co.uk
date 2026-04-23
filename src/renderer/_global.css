@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@source "./src/**/*.{js,ts,jsx,tsx}";
+
+@plugin "@iconify/tailwind4" {
+  prefix: 'i';
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
 
 body {
   @apply bg-slate-50;

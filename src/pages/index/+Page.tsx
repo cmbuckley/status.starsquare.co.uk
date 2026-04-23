@@ -76,7 +76,7 @@ export default function Page() {
               setInputFocused(false)
             }}
             className={cls`
-              h-10 rounded-full border px-4 shadow outline-none
+              h-10 rounded-full border border-gray-300 px-4 shadow outline-none
               transition-all focus:border-cyan-400 max-sm:hidden
             `}
             placeholder='Type "/" to search'
@@ -111,7 +111,7 @@ export default function Page() {
           rel='noreferrer'
           className='flex items-center gap-1'
         >
-          <span className='i-ic--outline-star size-4 animate-bounce' />
+          <span className='i-[ic--outline-star] size-4 animate-bounce' />
           Get your status page
         </a>
       </footer>

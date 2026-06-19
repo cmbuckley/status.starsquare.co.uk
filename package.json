@@ -43,7 +43,7 @@
     "@tailwindcss/vite": "^4.2.4",
     "@types/compression": "^1.7.5",
     "@types/express": "^5.0.1",
-    "@types/node": "^25.0.0",
+    "@types/node": "^26.0.0",
     "@types/node-fetch": "^3.0.2",
     "@types/papaparse": "^5.3.14",
     "@types/react": "^19.1.12",

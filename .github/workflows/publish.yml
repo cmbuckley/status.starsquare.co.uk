@@ -17,7 +17,7 @@ jobs:
       url: ${{ steps.deployment-url.outputs.url }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Get route from wrangler
         uses: sebrollen/toml-action@v1.2.0

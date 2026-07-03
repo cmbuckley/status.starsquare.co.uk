@@ -43,14 +43,14 @@ importers:
         version: 0.4.195(react-streaming@0.3.43(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(vite@5.4.3(@types/node@26.0.0)(lightningcss@1.32.0))
       wrangler:
         specifier: ^4.7.0
-        version: 4.7.0(@cloudflare/workers-types@4.20240903.0)
+        version: 4.7.0(@cloudflare/workers-types@5.20260703.1)
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.27.1
         version: 2.27.1(@eslint-react/eslint-plugin@1.12.1(eslint@9.9.1(jiti@2.6.1))(typescript@5.3.3))(@typescript-eslint/utils@8.59.0(eslint@9.9.1(jiti@2.6.1))(typescript@5.3.3))(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.2(eslint@9.9.1(jiti@2.6.1)))(eslint-plugin-react-hooks@5.1.0-rc-fb9a90fa48-20240614(eslint@9.9.1(jiti@2.6.1)))(eslint-plugin-react-refresh@0.4.11(eslint@9.9.1(jiti@2.6.1)))(eslint@9.9.1(jiti@2.6.1))(typescript@5.3.3)
       '@cloudflare/workers-types':
-        specifier: ^4.20240903.0
-        version: 4.20240903.0
+        specifier: ^5.20260703.1
+        version: 5.20260703.1
       '@commitlint/cli':
         specifier: ^19.4.0
         version: 19.4.0(@types/node@26.0.0)(typescript@5.3.3)
@@ -410,8 +410,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@4.20240903.0':
-    resolution: {integrity: sha512-a4mqgtVsPWg3JNNlQdLRE0Z6/mHr/uXa1ANDw6Zd7in438UCbeb+j7Z954Sf93G24jExpAn9VZ8kUUml0RwZbQ==}
+  '@cloudflare/workers-types@5.20260703.1':
+    resolution: {integrity: sha512-FaX1NlA+XbCjR6c0v0dLqXLmSlWvnMDg2fneVOzOoHJM5XL8gwqoAv9T0I0Ev5f199bTsr7styYgT88j7RftwA==}
 
   '@commitlint/cli@19.4.0':
     resolution: {integrity: sha512-sJX4J9UioVwZHq7JWM9tjT5bgWYaIN3rC4FP7YwfEwBYiIO+wMyRttRvQLNkow0vCdM0D67r9NEWU0Ui03I4Eg==}
@@ -2943,7 +2943,7 @@ packages:
   git-raw-commits@4.0.0:
     resolution: {integrity: sha512-ICsMM1Wk8xSGMowkOmPrzo2Fgmfo4bMHLNX6ytHjajRJUqvHOw/TFapQ+QG75c3X/tTDDhOSRPGC52dDbNM8FQ==}
     engines: {node: '>=16'}
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   glob-parent@5.1.2:
@@ -5070,7 +5070,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20250321.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20240903.0': {}
+  '@cloudflare/workers-types@5.20260703.1': {}
 
   '@commitlint/cli@19.4.0(@types/node@26.0.0)(typescript@5.3.3)':
     dependencies:
@@ -9518,7 +9518,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20250321.0
       '@cloudflare/workerd-windows-64': 1.20250321.0
 
-  wrangler@4.7.0(@cloudflare/workers-types@4.20240903.0):
+  wrangler@4.7.0(@cloudflare/workers-types@5.20260703.1):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@cloudflare/unenv-preset': 2.3.1(unenv@2.0.0-rc.15)(workerd@1.20250321.0)
@@ -9529,7 +9529,7 @@ snapshots:
       unenv: 2.0.0-rc.15
       workerd: 1.20250321.0
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20240903.0
+      '@cloudflare/workers-types': 5.20260703.1
       fsevents: 2.3.3
       sharp: 0.33.5
     transitivePeerDependencies:

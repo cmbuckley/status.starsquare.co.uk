@@ -8,7 +8,7 @@ import compression from 'compression'
 
 import type { CustomPageContext } from '#src/worker/ssr'
 
-const PORT = 3000
+const PORT = 4000
 
 async function startServer() {
   const app = express()

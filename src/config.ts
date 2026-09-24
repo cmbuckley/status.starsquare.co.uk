@@ -25,10 +25,6 @@ export const config: Config = {
     name: 'Emilia & Chris Wedding',
     url: 'https://emilia-chris-wedding.starsquare.co.uk',
   }, {
-    id: 'icorrect-it',
-    name: 'I Correct It',
-    url: 'https://icorrect.it',
-  }, {
     id: 'jordanhume-co-uk',
     name: 'Jordan Hume',
     url: 'https://jordanhume.co.uk',
